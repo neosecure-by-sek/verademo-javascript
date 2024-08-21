@@ -5,7 +5,7 @@ on:
 
 jobs:
   veracode-sca:
-    runs-on: neo-runners
+    runs-on: self-hosted
     steps:
       # Repo Checkout
       - uses: actions/checkout@v4.1.1
