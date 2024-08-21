@@ -13,8 +13,6 @@ on:
 jobs:
   veracode-sca:
     runs-on: neo-runners
-    name: veracode software composition analysis
-
     steps:
       # Repo Checkout
       - uses: actions/checkout@v4.1.1
