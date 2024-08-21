@@ -1,0 +1,26 @@
+name: Veracode SCA
+
+on:
+  workflow_dispatch:
+    inputs:
+      SRCCLR_WORKSPACE_SLUG:
+        required: true
+        type: string
+      SRCCLR_SCAN_DIR:
+        required: true
+        type: string
+
+jobs:
+  veracode-sca:
+    runs-on: neo-runners
+    name: veracode software composition analysis
+
+    steps:
+      # Repo Checkout
+      - uses: actions/checkout@v4.1.1
+        with:
+          repository: ${{ github.event.client_payload.repository.full_name }}
+          ref: ${{ github.event.client_payload.sha }}
+
+      - run: |
+          ls -la
