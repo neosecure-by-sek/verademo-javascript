@@ -2,13 +2,6 @@ name: Veracode SCA
 
 on:
   workflow_dispatch:
-    inputs:
-      SRCCLR_WORKSPACE_SLUG:
-        required: true
-        type: string
-      SRCCLR_SCAN_DIR:
-        required: true
-        type: string
 
 jobs:
   veracode-sca:
