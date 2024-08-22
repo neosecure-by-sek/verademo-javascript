@@ -9,9 +9,19 @@ jobs:
     steps:
       # Repo Checkout
       - uses: actions/checkout@v4.1.1
+        name: Repository checkout
         with:
           repository: ${{ github.event.client_payload.repository.full_name }}
           ref: ${{ github.event.client_payload.sha }}
-
       - run: |
           ls -la
+      - uses: veracode/veracode-sca@v2.1.12
+        name: Run Veracode SCA
+        env:
+          SRCCLR_API_TOKEN: ${{ secrets.VERACODE_AGENT_TOKEN }}
+          JAVA_OPTS: -Xms2g -Xmx4g
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          create-issues: false
+          recursive: true
+          allow-dirty: true
