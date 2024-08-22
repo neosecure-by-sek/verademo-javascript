@@ -5,7 +5,7 @@ on:
 
 jobs:
   veracode-sca:
-    runs-on: self-hosted
+    runs-on: ${{ github.event.repository.name }}
     steps:
       # Repo Checkout
       - uses: actions/checkout@v4.1.1
